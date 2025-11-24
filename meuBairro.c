@@ -61,15 +61,13 @@ void imprimeGrafo(Vert G[], int ordem);
 void calculaDistanciasDijkstra(Vert G[], int ordem, int origem, float dist[]);
 float distanciaAteLocalidade(float dist[], Localidade loc, int *vertice_mais_proximo);
 void imprimeCaminho(Vert G[], int origem, int destino);
-// **NOVAS FUNÇÕES PARA O TSP**
+// FUNÇÕES PARA O TSP
 void resetaPredecessores(Vert G[], int ordem);
 float calculaMatrizDistancias(Vert G[], int ordem, Localidade locais[], int idx_loc_origem, int idx_loc_destino, int *vert_origem, int *vert_destino, int *vert_prox_destino);
 void tspVizinhoMaisProximo(Vert G[], int ordem, Localidade locais[], int qtdLocal, int locais_a_visitar_idx[], int qtdVisitar);
 
 
-/*
- * Cria um grafo com 'ordem' vértices.
- */
+// Cria um grafo com 'ordem' vértices.
 void criaGrafo(Vert **G, int ordem){
 	int i;
 	*G= (Vert*) malloc(sizeof(Vert)*ordem);
@@ -81,9 +79,7 @@ void criaGrafo(Vert **G, int ordem){
 	}
 }
 
-/*
- * Libera a memória do grafo e de suas listas de arestas.
- */
+//Libera a memória do grafo e de suas listas de arestas.
 void destroiGrafo(Vert **G, int ordem){
 	int i;
 	Arest *a, *n;
@@ -98,9 +94,7 @@ void destroiGrafo(Vert **G, int ordem){
 	free(*G);
 }
 
-/*
- * Acrescenta uma aresta não direcionada entre os vértices v1 e v2 com o peso fornecido.
- */
+//Acrescenta uma aresta não direcionada entre os vértices v1 e v2 com o peso fornecido.
 int acrescentaAresta(Vert G[], int ordem, int v1, int v2, float peso){
 	Arest * A1, *A2;
 	if (v1<0 || v1 >= ordem) return 0;
@@ -124,9 +118,7 @@ int acrescentaAresta(Vert G[], int ordem, int v1, int v2, float peso){
 	return 1;
 }
 
-/*
- * Imprime o grafo em formato de lista de adjacência (com pesos em metros).
- */
+//Imprime o grafo em formato de lista de adjacência (com pesos em metros).
 void imprimeGrafo(Vert G[], int ordem){
 	int i;
 	Arest *aux;
@@ -141,9 +133,7 @@ void imprimeGrafo(Vert G[], int ordem){
 	printf("\n\n");
 }
 
-/*
- * Reinicia o array de predecessor. Essencial antes de cada execução do Dijkstra.
- */
+//Reinicia o array de predecessor. Essencial antes de cada execução do Dijkstra.
 void resetaPredecessores(Vert G[], int ordem) {
     for (int i = 0; i < ordem; i++) {
         G[i].pred = -1;
@@ -416,7 +406,7 @@ void tspVizinhoMaisProximo(Vert G[], int ordem, Localidade locais[], int qtdLoca
     free(visitado);
 }
 
-// Função principal (AGORA COM A LÓGICA DO TSP)
+// Função principal (agora com a lógica do TSP)
 int main(int argc, char *argv[]) {
 	Vert *G;
 	int ordemG = 34;
